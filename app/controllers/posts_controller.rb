@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :set_post, only: [:show]
+  before_action :set_user_post, only: [:edit, :update, :destroy]
+  access all: [:index], user: [:index, :show], editor: :all 
 
   # GET /posts
   def index
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = current_user.posts.new
   end
 
   # GET /posts/1/edit
@@ -22,7 +23,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
@@ -47,13 +48,17 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def post_params
-      params.require(:post).permit(:title, :description, :user_id)
-    end
+  def set_user_post
+    @post = current_user.posts.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def post_params
+    params.require(:post).permit(:title, :description, :user_id)
+  end
 end
