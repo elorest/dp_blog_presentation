@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy]
+  access company_admin: :all 
 
   # GET /admin/users
   def index

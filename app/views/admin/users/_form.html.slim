@@ -17,5 +17,5 @@
     = f.text_field :password_confirmation
   .field
     = f.label :roles
-    = f.text_field :roles
+    = f.select :roles, [:editor, :company_admin]
   .actions = f.submit
