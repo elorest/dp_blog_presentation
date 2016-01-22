@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   ################################################################################ 
   ## PeterGate Roles
   ## The :user role is added by default and shouldn't be included in this list.
-  petergate(roles: [:company_admin, :editor], multiple: false)
+  petergate(roles: [:company_admin, :editor], multiple: true)
   ################################################################################
   has_many :posts 
 
