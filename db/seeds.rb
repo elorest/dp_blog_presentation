@@ -10,6 +10,6 @@ User.create(email: "admin@example.com", password: "example1", roles: [:company_a
 editor = User.create(email: "editor@example.com", password: "example1", roles: [:editor])
 User.create(email: "user@example.com", password: "example1")
 
-editor.posts.create(title: "Petergate is easy to use.", content: "You can use it to easily add roles to your projects.")
-editor.posts.create(title: "Petergate supports multiple and singular roles.", content: "This allows you to give a single user access to multiple sections of your app or restrict them to just a single role.")
+editor.posts.create(title: "Petergate is easy to use.", description: "You can use it to easily add roles to your projects.")
+editor.posts.create(title: "Petergate supports multiple and singular roles.", description: "This allows you to give a single user access to multiple sections of your app or restrict them to just a single role.")
 
