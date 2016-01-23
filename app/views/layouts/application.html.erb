@@ -16,7 +16,7 @@
         <% end %>
       </span>
       <span><%= link_to "posts", posts_path %></span>
-      <% if logged_in?(:company_admin?) %>
+      <% if logged_in?(:company_admin) %>
         <span><%= link_to "users", admin_users_path %></span>
       <% end %>
     </div>
