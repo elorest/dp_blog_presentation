@@ -7,11 +7,19 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <% if current_user %>
-      <%= link_to "logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "login", new_user_session_path %>
-    <% end %>
+    <div id='navbar'>
+      <span>
+        <% if current_user %>
+          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "login", new_user_session_path %>
+        <% end %>
+      </span>
+      <span><%= link_to "posts", posts_path %></span>
+      <% if logged_in?(:company_admin?) %>
+        <span><%= link_to "users", admin_users_path %></span>
+      <% end %>
+    </div>
     <br/>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

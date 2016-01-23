@@ -6,8 +6,16 @@ Rails.application.routes.draw do
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
   # You can have the root of your site routed with "root"
+
+  authenticated :user, lambda {|u| u.role == :editor} do
+    root 'posts#index', as: editor_path
+  end
+
+  authenticated :user, lambda {|u| u.role == :company_admin} do
+    root 'admin/users#index', as: admin_path
+  end
+
   root 'posts#index'
 
   # Example of regular route:

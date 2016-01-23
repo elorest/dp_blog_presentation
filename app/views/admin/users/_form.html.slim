@@ -9,13 +9,14 @@
   .field
     = f.label :email
     = f.text_field :email
-  .field
-    = f.label :password
-    = f.text_field :password
-  .field
-    = f.label :password_confirmation
-    = f.text_field :password_confirmation
+  - if @admin_user.new_record? || params[:passwd]
+    .field
+      = f.label :password
+      = f.text_field :password
+    .field
+      = f.label :password_confirmation
+      = f.text_field :password_confirmation
   .field
     = f.label :roles
-    = f.select :roles, [:editor, :company_admin]
+    = f.select :roles, [:editor, :company_admin], {}, {multiple: true}
   .actions = f.submit
