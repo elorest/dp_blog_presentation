@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   authenticated :user, lambda {|u| u.role == :editor} do
-    root 'posts#index', as: editor_path
+    root 'posts#index', as: :editor_path
   end
 
   authenticated :user, lambda {|u| u.role == :company_admin} do
-    root 'admin/users#index', as: admin_path
+    root 'admin/users#index', as: :admin_path
   end
 
   root 'posts#index'
