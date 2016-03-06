@@ -7,24 +7,34 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div id='navbar'>
-      <span>
-        <% if current_user %>
-          <%= link_to "logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "login", new_user_session_path %>
-        <% end %>
-      </span>
-      <span><%= link_to "posts", posts_path %></span>
-      <% if logged_in?(:company_admin) %>
-        <span><%= link_to "users", admin_users_path %></span>
-      <% end %>
-    </div>
-    <br/>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class='container'>
-      <%= yield %>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <div class="page-header">
+                <% if current_user %>
+                  <%= link_to "logout", destroy_user_session_path, method: :delete, class: "btn btn-default" %>
+                <% else %>
+                  <%= link_to "login", new_user_session_path, class: "btn btn-default" %>
+                <% end %>
+              <%= link_to "posts", posts_path, class: "btn btn-default" %>
+              <% if logged_in?(:company_admin) %>
+                <%= link_to "users", admin_users_path, class: "btn btn-default" %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-12'>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-12'>
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

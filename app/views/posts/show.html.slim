@@ -1,12 +1,10 @@
-p
-  strong Title:
+h2
   = @post.title
-p
-  strong Description:
-  = @post.description
-p
-  strong User:
-  = @post.user.email
+blockquote
+  p
+    = @post.description
+  small
+    = "by - " + @post.user.email
 
 = link_to 'Edit', edit_post_path(@post) if logged_in?(:editor)
 '|
