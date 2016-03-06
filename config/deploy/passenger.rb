@@ -10,7 +10,7 @@ set :rails_env, "production"
 # if (copy_id_present = `which ssh-copy-id`).size < 1 || copy_id_present.include?("not found")
 #   `brew install ssh-copy-id`
 # end
-urls = %w{deploy@pinnaclerecoveryut.com}
+urls = %w{deploy@puma.elorest.com}
 role :app, urls 
 role :web, urls 
 role :db,  urls 

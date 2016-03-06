@@ -1,16 +1,19 @@
-set :stage, :production
+set :stage, :staging
 set :branch, ENV["branch"] || "master"
-set :env, "production" 
+set :rails_env, "production"
 
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-domains = %w{deploy@medforums.com}
-role :app, domains 
-role :web, domains 
-role :db,  domains
+# if (copy_id_present = `which ssh-copy-id`).size < 1 || copy_id_present.include?("not found")
+#   `brew install ssh-copy-id`
+# end
+urls = %w{deploy@puma.elorest.com}
+role :app, urls 
+role :web, urls 
+role :db,  urls 
 
 # Extended Server Syntax
 # ======================
@@ -18,7 +21,7 @@ role :db,  domains
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server domains.first, user: 'deploy', roles: %w{web app}, my_property: :my_value
+server urls.first, user: 'deploy', roles: %w{web app}, my_property: :my_value
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -42,4 +45,4 @@ server domains.first, user: 'deploy', roles: %w{web app}, my_property: :my_value
 #   }
 # setting per server overrides global ssh_options
 
-# fetch(:default_env).merge!(rails_env: :production)
+# fetch(:default_env).merge!(rails_env: :staging)
