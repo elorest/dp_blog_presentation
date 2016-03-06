@@ -14,6 +14,7 @@ urls = %w{deploy@puma.elorest.com}
 role :app, urls 
 role :web, urls 
 role :db,  urls 
+set :deploy_to, '~/www/passenger'
 
 # Extended Server Syntax
 # ======================

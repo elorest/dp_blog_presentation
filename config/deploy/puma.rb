@@ -1,6 +1,7 @@
 set :stage, :staging
 set :branch, ENV["branch"] || "master"
 set :rails_env, "production"
+set :deploy_to, '~/www/puma'
 
 # Simple Role Syntax
 # ==================
