@@ -28,7 +28,8 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "kill, release_path.join('tmp/restart.txt')
+      execute "kill -9" , "`#{release_path.join('pids/puma.pid')}`"
+      execute "puma -d"
     end
   end
 
