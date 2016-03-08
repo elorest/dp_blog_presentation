@@ -31,7 +31,7 @@ namespace :deploy do
     end
 
     on roles(:unicorn), in: :sequence, wait: 5 do
-      unicorn_rails
+      unicorn
     end
   end
 
