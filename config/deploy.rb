@@ -20,16 +20,23 @@ set :rails_env, "production"
 
 namespace :deploy do
   desc 'Restart application'
+  namespace :deploy do
+  desc 'Restart application'
   task :restart do
-    on roles(:passenger), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
+    on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
     end
-
-    on roles(:puma), in: :sequence, wait: 5 do
-      rails s puma
-    end
   end
+  # task :restart do
+  #   on roles(:passenger), in: :sequence, wait: 5 do
+  #     # Your restart mechanism here, for example:
+  #     execute :touch, release_path.join('tmp/restart.txt')
+  #   end
+  #
+  #   on roles(:puma), in: :sequence, wait: 5 do
+  #     rails s puma
+  #   end
+  # end
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
