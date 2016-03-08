@@ -1,5 +1,5 @@
 # set path to application
-app_dir = File.expand_path("../..", __FILE__)
+app_dir = "/home/deploy/www/unicorn"
 shared_dir = "#{app_dir}/shared"
 working_directory app_dir
 
