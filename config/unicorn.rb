@@ -13,8 +13,8 @@ stderr_path "/home/deploy/www/unicorn/shared/log/unicorn.log"
 stdout_path "/home/deploy/www/unicorn/shared/log/unicorn.log"
 
 # Unicorn socket
-listen "/home/deploy/www/unicorn/shared/tmp/unicorn.sock"
-listen "/home/deploy/www/unicorn/shared/tmp/unicorn.sock"
+listen "/home/deploy/www/unicorn/shared/sockets/unicorn.sock"
+listen "/home/deploy/www/unicorn/shared/sockets/unicorn.sock"
 
 # Number of processes
 # worker_processes 4
