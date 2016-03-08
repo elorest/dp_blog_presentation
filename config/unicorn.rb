@@ -1,7 +1,7 @@
 # set path to application
 app_dir = "/home/deploy/www/unicorn"
 shared_dir = "#{app_dir}/shared"
-working_directory app_dir
+working_directory "#{app_dir}/current"
 
 
 # Set unicorn options
