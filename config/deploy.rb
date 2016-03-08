@@ -29,6 +29,10 @@ namespace :deploy do
     on roles(:puma), in: :sequence, wait: 5 do
       puma
     end
+
+    on roles(:unicorn), in: :sequence, wait: 5 do
+      unicorn_rails
+    end
   end
 
   after :restart, :clear_cache do
