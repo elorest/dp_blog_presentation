@@ -4,8 +4,9 @@ workers 2
 # Min and Max threads per worker
 threads 1, 6
 
-app_dir = File.expand_path(__FILE__, "..")
-tmp_dir = "#{app_dir}/tmp"
+app_dir = "/home/deploy/www/puma" 
+shared_dir = "#{app_dir}/shared"
+tmp_dir = "#{shared_dir}/tmp"
 
 # Default to production
 rails_env = ENV['RAILS_ENV'] || "production"
@@ -15,7 +16,7 @@ environment rails_env
 bind "unix://#{tmp_dir}/sockets/puma.sock"
 
 # Logging
-stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
+stdout_redirect "#{shared}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
 # Set master PID and state locations
 pidfile "#{tmp_dir}/pids/puma.pid"
