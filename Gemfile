@@ -53,3 +53,4 @@ group :development do
   gem 'capistrano-rvm'
 end
 gem "puma"
+gem "unicorn"
