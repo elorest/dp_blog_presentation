@@ -27,7 +27,7 @@ namespace :deploy do
     end
 
     on roles(:puma), in: :sequence, wait: 5 do
-      rails s puma
+      puma
     end
   end
 
