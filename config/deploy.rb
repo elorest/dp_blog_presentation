@@ -7,7 +7,7 @@ set :deploy_to, '~/www/passenger'
 set :scm, :git
 
 set :format, :pretty
-set :linked_dirs, %w{log tmp vendor/bundle public/system public/uploads}
+set :linked_dirs, %w{log tmp pids sockets vendor/bundle public/system public/uploads}
 # set :log_level, :info
 set :log_level, :info
 set :rails_env, "production"
