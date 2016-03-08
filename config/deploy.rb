@@ -1,7 +1,7 @@
 set :application, 'passenger'
 set :repo_url, 'git@github.com:isaacsloan/dp_blog_presentation.git'
 
-set :branch, :master 
+set :branch, :master
 
 set :deploy_to, '~/www/passenger'
 set :scm, :git
@@ -52,7 +52,7 @@ namespace :db do
 end
 
 namespace :logs do
-  desc "tail rails logs" 
+  desc "tail rails logs"
   task :tail do
     ################################################################################
     # Sets log level to debug so we can see program output

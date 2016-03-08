@@ -108,6 +108,7 @@ GEM
     orm_adapter (0.5.0)
     petergate (1.2.1)
       activerecord (> 4.0.0)
+    puma (3.1.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -206,6 +207,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   petergate
+  puma
   rails (= 4.2.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

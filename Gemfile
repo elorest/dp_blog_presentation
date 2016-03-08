@@ -52,4 +52,4 @@ group :development do
   gem 'capistrano-rails-console'
   gem 'capistrano-rvm'
 end
-
+gem "puma"
