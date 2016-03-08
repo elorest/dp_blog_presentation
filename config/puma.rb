@@ -16,7 +16,7 @@ environment rails_env
 bind "unix://#{tmp_dir}/sockets/puma.sock"
 
 # Logging
-stdout_redirect "#{shared}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
+stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
 # Set master PID and state locations
 pidfile "#{tmp_dir}/pids/puma.pid"
