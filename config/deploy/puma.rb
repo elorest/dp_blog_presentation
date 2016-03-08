@@ -24,6 +24,18 @@ role :db,  urls
 # extended properties on the server.
 server urls.first, user: 'deploy', roles: %w{web app}, my_property: :my_value
 
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "kill, release_path.join('tmp/restart.txt')
+    end
+  end
+
+  after :publishing, "deploy:restart"
+  after :finishing, 'deploy:cleanup'
+end
+
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
 # you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
