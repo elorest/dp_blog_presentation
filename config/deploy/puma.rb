@@ -28,7 +28,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "kill -9" , "$(cat #{release_path.join('pids/puma.pid')})"
+      execute "kill -9 $(cat #{shared_path.join('pids/puma.pid')})"
       execute "puma -d"
     end
   end
