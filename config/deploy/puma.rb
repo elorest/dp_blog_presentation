@@ -24,22 +24,22 @@ role :db,  urls
 # extended properties on the server.
 server urls.first, user: 'deploy', roles: %w{web app}, my_property: :my_value
 
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      within shared_path do
-        run "/bin/kill -9 $(cat #{shared_path.join('pids/puma.pid')})"
-      end
-      within release_path do
-        run "puma -d"
-      end
-    end
-  end
-
-  after :publishing, "deploy:restart"
-  after :finishing, 'deploy:cleanup'
-end
+# namespace :deploy do
+#   desc 'Restart application'
+#   task :restart do
+#     on roles(:app), in: :sequence, wait: 5 do
+#       within shared_path do
+#         run "/bin/kill -9 $(cat #{shared_path.join('pids/puma.pid')})"
+#       end
+#       within release_path do
+#         run "puma -d"
+#       end
+#     end
+#   end
+#
+#   after :publishing, "deploy:restart"
+#   after :finishing, 'deploy:cleanup'
+# end
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
