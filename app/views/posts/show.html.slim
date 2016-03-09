@@ -1,11 +1,10 @@
 h2
   = @post.title
-blockquote
-  p
+blockquote.blockquote
+  h6
     = @post.description
-  small
+  p
     = "by - " + @post.user.email
+= link_to 'Edit', edit_post_path(@post), class: "btn btn-warning-outline" if logged_in?(:editor)
+= link_to 'Back', posts_path, class: "btn btn-primary-outline"
 
-= link_to 'Edit', edit_post_path(@post) if logged_in?(:editor)
-'|
-= link_to 'Back', posts_path
