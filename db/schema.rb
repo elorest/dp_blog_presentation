@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306053615) do
+ActiveRecord::Schema.define(version: 20160121234216) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -22,14 +22,6 @@ ActiveRecord::Schema.define(version: 20160306053615) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
-
-  create_table "things", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.string   "sex"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
