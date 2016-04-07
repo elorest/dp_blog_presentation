@@ -1,14 +1,15 @@
 h1 News Feed 
 
 table.table.table-striped
-  thead
+  thead.thead-inverse
     tr
       th Title
       th Description
       th Author
       th
-      th
-      th
+      - if logged_in?(:editor)
+        th
+        th
 
   tbody
     - @posts.each do |post|
@@ -24,3 +25,4 @@ table.table.table-striped
 br
 
 = link_to 'New Post', new_post_path if logged_in?(:editor)
+
